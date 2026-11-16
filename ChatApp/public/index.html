@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alapon</title>
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="m21.4 11-9.2 9.2a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5A8.4 8.4 0 1 1 21 11.5z"/></symbol>
+  <symbol id="i-out" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></symbol>
+</svg>
+
+<!-- AUTH -->
+<section id="auth">
+  <div class="hero">
+    <img class="logo" src="logo.png" alt="">
+    <h1>Alapon</h1>
+    <p class="tag">কথা হবে মন খুলে</p>
+    <ul><li>⚡ Real-time chat</li><li>👥 Friends niye group banao</li><li>📎 Photo, video &amp; file share</li></ul>
+  </div>
+  <div class="formwrap">
+    <form id="authForm" class="card">
+      <h2 id="authTitle">Welcome back</h2>
+      <p class="sub" id="authSub">Continue korte login koro</p>
+      <label>Username<input name="username" autocomplete="username" required></label>
+      <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
+      <button class="btn" id="authBtn">Login</button>
+      <p class="switch"><span id="authAsk">Account nai?</span> <a href="#" id="authSwitch">Sign up</a></p>
+    </form>
+  </div>
+</section>
+
+<!-- APP -->
+<div id="app" hidden>
+  <aside id="side">
+    <header class="sh">
+      <img class="lg" src="logo.png" alt=""><b>Alapon</b><span class="sp"></span>
+      <button class="ib" id="themeBtn" title="Theme"><svg class="ic"><use href="#i-moon"/></svg></button>
+      <button class="ib" id="dmBtn" title="New chat"><svg class="ic"><use href="#i-chat"/></svg></button>
+      <button class="ib pri" id="grpBtn" title="New group"><svg class="ic"><use href="#i-users"/></svg></button>
+    </header>
+    <div class="srch"><input id="search" placeholder="Search chats…"></div>
+    <nav class="tabs">
+      <button class="on" data-t="all">All</button><button data-t="group">Groups</button><button data-t="dm">Direct</button>
+    </nav>
+    <div id="roomList"></div>
+    <footer class="sf">
+      <div id="meAv"></div><b id="meName"></b><span class="sp"></span>
+      <button class="ib" id="logout" title="Logout"><svg class="ic"><use href="#i-out"/></svg></button>
+    </footer>
+  </aside>
+
+  <main id="chat">
+    <div id="empty" class="empty">
+      <img src="logo.png" alt=""><h3>Ekta chat select koro</h3>
+      <p>Othoba notun group baniye bondhuderke add koro.</p>
+      <button class="btn" id="grpBtn2"><svg class="ic"><use href="#i-users"/></svg> Create group</button>
+    </div>
+    <section id="conv" hidden>
+      <header class="ch">
+        <button class="ib" id="back"><svg class="ic"><use href="#i-back"/></svg></button>
+        <div id="cAv"></div>
+        <div class="ct"><b id="cName"></b><small id="cSub"></small></div>
+        <button class="ib" id="infoBtn"><svg class="ic"><use href="#i-info"/></svg></button>
+      </header>
+      <div id="msgs"></div>
+      <div id="typing"></div>
+      <div id="chip" hidden></div>
+      <footer class="comp">
+        <button class="ib" id="attach"><svg class="ic"><use href="#i-clip"/></svg></button>
+        <input type="file" id="file" hidden>
+        <textarea id="msg" rows="1" placeholder="Message likho…"></textarea>
+        <button class="send" id="send"><svg class="ic"><use href="#i-send"/></svg></button>
+      </footer>
+    </section>
+  </main>
+
+  <aside id="info">
+    <header><b>Details</b><button class="ib" id="infoClose"><svg class="ic"><use href="#i-x"/></svg></button></header>
+    <div id="infoBody"></div>
+  </aside>
+</div>
+
+<!-- PICKER MODAL -->
+<div id="modal" hidden>
+  <div class="mbox">
+    <header><b id="mTitle"></b><button class="ib" id="mClose"><svg class="ic"><use href="#i-x"/></svg></button></header>
+    <input id="gName" placeholder="Group name" maxlength="40">
+    <input id="uSearch" placeholder="Search people…">
+    <div id="uList"></div>
+    <button class="btn" id="mOk">Create group</button>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="client.js"></script>
+</body>
+</html>
